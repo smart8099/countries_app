@@ -1,9 +1,12 @@
 <template>
-<Navbar/>
+  <Navbar />
+  <div class="max-w-7xl mx-auto">
+    <RouterView />
+  </div>
 </template>
 
 <script setup>
-import Navbar from './components/Navbar.vue';
+import Navbar from "./components/Navbar.vue";
 
 </script>
 

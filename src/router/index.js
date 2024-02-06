@@ -13,7 +13,13 @@ const routes = [
     path: '/about',
     name: 'about',
     component: () => import('../views/AboutView.vue')
-  }
+  },
+  {
+    path: '/country/:name',
+    name: 'countryDetails',
+    component: () => import('../components/CountryCard.vue')
+  },
+  
 ]
 
 const router = createRouter({
