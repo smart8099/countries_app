@@ -9,25 +9,16 @@
 
   <div class="flex" v-else>
     <!-- Side Navigation with Filters -->
-    <div class="w-1/4 p-4 bg-gray-100 dark:bg-gray-900">
-      <div class="mb-4">
-        <h2 class="text-xl font-semibold mb-2">Filters</h2>
-        <!-- List of Filters (Example: Continent) -->
-        <div class="mb-2">
-          <input type="checkbox" id="filterId" value="input" class="mr-2" />
-          <label for="filter">Filter 1</label>
-        </div>
-      </div>
-    </div>
+    <FilterCountry />
 
     <!-- Main Content Area (Display Data based on Filters) -->
     <div class="flex-1 p-4">
       <!-- {{ countriesStore.countries }} -->
-      <h1 class="text-2xl font-semibold mb-4">Countries</h1>
+      <h1 class="text-2xl font-semibold mb-4">Countries({{ countriesStore.totalCountries }})</h1>
       <!-- Display countries based on selected filters -->
       <div class="grid grid-cols-3 gap-5">
         <CountryCard
-          v-for="country in countriesStore.countries"
+          v-for="country in countriesStore.filterCountriesByContinentsAndUNMembership"
           :key="country.name.common"
           :country="country"
         />
@@ -41,6 +32,7 @@ import { useCountriesStore } from "@/stores/countries";
 import { onMounted } from "vue";
 import CountryCard from "@/components/CountryCard.vue";
 import { FwbSpinner } from "flowbite-vue";
+import  FilterCountry  from "@/components/FilterCountry.vue"
 
 const countriesStore = useCountriesStore();
 
