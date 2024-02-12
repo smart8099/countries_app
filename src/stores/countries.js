@@ -16,6 +16,7 @@ export const useCountriesStore = defineStore("countries", {
     selectedContinents: [],
     isUNMember: false,
     isNonUNMember: false,
+    countryName: "",
   }),
   getters: {
     totalCountries() {
@@ -36,6 +37,12 @@ export const useCountriesStore = defineStore("countries", {
       if (!this.isUNMember && !this.isNonUNMember) {
         return filteredCountries;
       }
+
+      // if (this.countryName) {
+      //   const searchTerm = this.countryName.toLowerCase();
+      //   console.log(searchTerm)
+      //   return filteredCountries.filter(country => country.name.common.includes(searchTerm));
+      // }
 
       // Apply filtering based on UN membership status
       return filteredCountries.filter((country) => {
