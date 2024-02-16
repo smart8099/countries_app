@@ -1,5 +1,5 @@
 <script setup>
-
+import numeral from 'numeral'
 defineProps({
   country: Object,
 });
@@ -15,7 +15,7 @@ defineProps({
     </a>
     <div class="p-3">
       <router-link
-        :to="{ name: 'home'}"
+        :to="{ name: 'countryDetails',params : {name : country.name.common}}"
       >
       
         <h5
@@ -25,7 +25,7 @@ defineProps({
         </h5>
       </router-link>
       <span class="m-2 p-2 bg-slate-300 text-slate-800 rounded-md text-center block" >
-        <span class="font-bold">Continent :</span> {{ country.region }}
+        <span class="font-bold">Continent :</span> {{ country.continents[0] }}
       </span> 
       <span class="m-2 p-2 bg-slate-300 text-slate-800 rounded-md text-center block">
         <span class="font-bold">Region :</span> {{ country.subregion }}
@@ -33,7 +33,7 @@ defineProps({
       
       <p class="mt-3 mb-3 font-normal text-gray-700 dark:text-gray-400 text-center">
        <span class="font-bold">Population :</span>  
-       <span class="m-2 p-2 bg-blue-400 text-slate-800 rounded-md text-center" >{{ country.population }}</span>
+       <span class="m-2 p-2 bg-blue-400 text-slate-800 rounded-md text-center" >{{ numeral(country.population).format(0,0) }}</span>
       </p>
     </div>
   </div>

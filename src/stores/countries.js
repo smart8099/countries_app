@@ -1,3 +1,4 @@
+import axios from "axios";
 import { defineStore } from "pinia";
 
 export const useCountriesStore = defineStore("countries", {
@@ -7,10 +8,11 @@ export const useCountriesStore = defineStore("countries", {
     singleCountry: {},
     continents: [
       "Africa",
-      "Europe",
       "Asia",
       "Antarctica",
-      "Americas",
+      "Europe",
+      "North America",
+      "South America",
       "Oceania",
     ],
     selectedContinents: [],
@@ -26,23 +28,26 @@ export const useCountriesStore = defineStore("countries", {
     filterCountriesByContinents() {
       if (!this.selectedContinents.length) return this.countries;
       return this.countries.filter((country) =>
-        this.selectedContinents.includes(country.region)
+        this.selectedContinents.includes(country.continents[0])
       );
     },
 
     filterCountriesByContinentsAndUNMembership() {
       let filteredCountries = this.filterCountriesByContinents;
 
+      if (this.countryName) {
+        const searchTerm =
+          this.countryName.charAt(0).toUpperCase() +
+          this.countryName.slice(1).toLocaleLowerCase();
+        return filteredCountries.filter((country) =>
+          country.name.common.includes(searchTerm)
+        );
+      }
+
       // Check if both checkboxes are unchecked
       if (!this.isUNMember && !this.isNonUNMember) {
         return filteredCountries;
       }
-
-      // if (this.countryName) {
-      //   const searchTerm = this.countryName.toLowerCase();
-      //   console.log(searchTerm)
-      //   return filteredCountries.filter(country => country.name.common.includes(searchTerm));
-      // }
 
       // Apply filtering based on UN membership status
       return filteredCountries.filter((country) => {
@@ -62,15 +67,13 @@ export const useCountriesStore = defineStore("countries", {
         }
       });
     },
-
   },
   actions: {
     async getCountries() {
       try {
         this.isLoading = true;
-        const result = await fetch("https://restcountries.com/v3.1/all");
-        const response = await result.json();
-        const extractedCountries = this.extractCountries(response);
+        const result = await axios("https://restcountries.com/v3.1/all");
+        const extractedCountries = this.extractCountries(result.data);
         this.setCountries(extractedCountries);
       } catch (error) {
         console.error("Error fetching countries:", error);
@@ -109,6 +112,21 @@ export const useCountriesStore = defineStore("countries", {
 
     setCountries(countries) {
       this.countries = countries;
+    },
+
+    async getSingleCountry(routeCountryName) {
+      console.log(routeCountryName);
+      try {
+        const result = await fetch(
+          `https://restcountries.com/v3.1/name/${routeCountryName}`
+        );
+        const response = await result.json();
+        const extractedCountry = this.extractCountries(response);
+        this.singleCountry = extractedCountry[0];
+        console.log(this.singleCountry);
+      } catch (error) {
+        console.log("there was error in request", error);
+      }
     },
   },
 });
