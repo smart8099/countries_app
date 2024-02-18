@@ -2,7 +2,7 @@
   <div class="flex">
     <!-- Side Navigation with Filters -->
     <div
-      class="fixed left-0 top-[6rem] bottom-0 w-1/4 ml- 6 bg-gray-100 dark:bg-gray-900 overflow-y-auto z-10"
+      class="fixed left-0 top-[6rem] bottom-0 w-1/4 ml-6 bg-gray-100 dark:bg-gray-900 overflow-y-auto z-10"
     >
       <FilterCountry />
     </div>

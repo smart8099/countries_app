@@ -18,6 +18,11 @@ const routes = [
     component: () => import('../views/CountryDetails.vue'),
     props:true
   },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: () => import("../views/NotFoundView.vue"),
+  },
   
 ]
 

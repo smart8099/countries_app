@@ -1,5 +1,6 @@
 import axios from "axios";
 import { defineStore } from "pinia";
+import router from "@/router";
 
 export const useCountriesStore = defineStore("countries", {
   state: () => ({
@@ -117,15 +118,22 @@ export const useCountriesStore = defineStore("countries", {
     async getSingleCountry(routeCountryName) {
       console.log(routeCountryName);
       try {
-        const result = await fetch(
+        const result = await axios(
           `https://restcountries.com/v3.1/name/${routeCountryName}`
         );
-        const response = await result.json();
+        const response = result.data;
         const extractedCountry = this.extractCountries(response);
         this.singleCountry = extractedCountry[0];
         console.log(this.singleCountry);
       } catch (error) {
-        console.log("there was error in request", error);
+        this.singleCountry = {}
+        console.log(error);
+        if (error.response.status === 404) {
+          router.push({ 
+            name: "NotFound",
+           
+          });
+        }
       }
     },
   },
