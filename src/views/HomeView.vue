@@ -19,7 +19,7 @@
         </div>
 
         <div class="dark:bg-gray-900" v-else>
-          <h1 class="sticky top-20 z-50 text-2xl font-semibold text-white mb-4 bg-white border-gray-200 dark:bg-gray-900">
+          <h1 class="sticky top-20 z-50 text-2xl font-semibold  mb-4  border-gray-200 dark:bg-gray-900  dark:text-white">
             Countries({{ countriesStore.totalCountries }})
           </h1>
           <!-- Display countries based on selected filters -->
