@@ -116,8 +116,8 @@ export const useCountriesStore = defineStore("countries", {
     },
 
     async getSingleCountry(routeCountryName) {
-      console.log(routeCountryName);
       try {
+        this.isLoading = true
         const result = await axios(
           `https://restcountries.com/v3.1/name/${routeCountryName}`
         );
@@ -134,6 +134,8 @@ export const useCountriesStore = defineStore("countries", {
            
         //   });
         // }
+      }finally{
+        this.isLoading = false
       }
     },
   },
