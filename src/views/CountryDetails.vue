@@ -14,20 +14,21 @@
             Country Not Found
           </p>
           <p class="mb-4 text-lg font-light text-blue-700 dark:text-gray-400">
-            Sorry, we can't find any country called <span class="text-red-700">{{ $route.params.name }}</span>. You'll find lots to explore on the
-            home page.
+            Sorry, we can't find any country called
+            <span class="text-red-700">{{ $route.params.name }}</span
+            >. You'll find lots to explore on the home page.
           </p>
-          <a
-            href="#"
+          <router-link
+            to="/"
             class="inline-flex text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4"
-            >Back to Homepage</a
+            >Back to Homepage</router-link
           >
         </div>
       </div>
     </section>
   </div>
   <div v-else>
-    <div class="container mx-auto py-8">
+    <div class="container mx-auto py-8 dark:bg-gray-900">
       <!-- Flag -->
       <div class="mb-8">
         <img
@@ -47,18 +48,20 @@
               class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
             >
               <tr>
-                <th scope="col" class="px-6 py-3">Attribute</th>
-                <th scope="col" class="px-6 py-3">Value</th>
+                <th scope="col" class="px-6 py-3 dark:text-white">Attribute</th>
+                <th scope="col" class="px-6 py-3 dark:text-white">Value</th>
               </tr>
             </thead>
             <tbody>
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td
+                  class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300"
+                >
                   Common Name
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   {{ countriesStore.singleCountry.name?.common }}
                 </td>
               </tr>
@@ -66,10 +69,10 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   Official Name
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   {{ countriesStore.singleCountry.name?.official }}
                 </td>
               </tr>
@@ -77,10 +80,10 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   Status
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   {{ countriesStore.singleCountry.status }}
                 </td>
               </tr>
@@ -88,10 +91,10 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   Independent
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   {{ countriesStore.singleCountry.independent }}
                 </td>
               </tr>
@@ -99,10 +102,10 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   UN Member
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   {{ countriesStore.singleCountry.independent }}
                 </td>
               </tr>
@@ -110,10 +113,10 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   Currency
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   <div
                     v-for="(currency, code) in countriesStore.singleCountry
                       ?.currencies"
@@ -127,10 +130,10 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   Capital
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   {{ countriesStore.singleCountry.capital?.join(", ") }}
                 </td>
               </tr>
@@ -138,10 +141,10 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   Region
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   {{ countriesStore.singleCountry.region }}
                 </td>
               </tr>
@@ -149,10 +152,10 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   Region
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   {{ countriesStore.singleCountry.subregion }}
                 </td>
               </tr>
@@ -160,10 +163,10 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   Population
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   {{
                     numeral(countriesStore.singleCountry.population).format(
                       0,
@@ -176,10 +179,10 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   Languages
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   {{
                     countriesStore.singleCountry?.languages
                       ? Object.values(
@@ -193,10 +196,10 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   Timezones
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   {{ countriesStore.singleCountry.timezones?.join(", ") }}
                 </td>
               </tr>
@@ -204,10 +207,10 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   Continent
                 </td>
-                <td class="px-4 py-2 border-b border-gray-300">
+                <td class="px-4 py-2 border-b border-gray-300 dark:text-slate-300">
                   {{ countriesStore.singleCountry.continents?.join(", ") }}
                 </td>
               </tr>
@@ -215,14 +218,14 @@
               <tr
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
-                <td class="px-4 py-2 font-semibold border-b border-gray-300">
+                <td class="px-4 py-2 font-semibold border-b border-gray-300 dark:text-slate-300">
                   Maps
                 </td>
                 <td class="px-4 py-2 border-b border-gray-300">
                   <a
                     :href="countriesStore.singleCountry.maps?.googleMaps"
                     target="_blank"
-                    class="text-blue-600"
+                    class="text-blue-600 dark:text-blue-500"
                     >Google Maps</a
                   >
                   <span
@@ -232,7 +235,7 @@
                     <a
                       :href="countriesStore.singleCountry.maps?.openStreetMaps"
                       target="_blank"
-                      class="text-blue-600"
+                      class="text-blue-600 dark:text-blue-500"
                       >OpenStreetMap</a
                     >
                   </span>

@@ -18,8 +18,8 @@
           <fwb-spinner size="10" color="blue" />
         </div>
 
-        <div v-else>
-          <h1 class="sticky top-20 z-50 text-2xl font-semibold mb-4 bg-white border-gray-200 dark:bg-gray-900">
+        <div class="dark:bg-gray-900" v-else>
+          <h1 class="sticky top-20 z-50 text-2xl font-semibold text-white mb-4 bg-white border-gray-200 dark:bg-gray-900">
             Countries({{ countriesStore.totalCountries }})
           </h1>
           <!-- Display countries based on selected filters -->

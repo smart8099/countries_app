@@ -128,12 +128,12 @@ export const useCountriesStore = defineStore("countries", {
       } catch (error) {
         this.singleCountry = {}
         console.log(error);
-        if (error.response.status === 404) {
-          router.push({ 
-            name: "NotFound",
+        // if (error.response.status === 404) {
+        //   router.push({ 
+        //     name: "NotFound",
            
-          });
-        }
+        //   });
+        // }
       }
     },
   },
