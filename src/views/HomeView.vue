@@ -15,7 +15,7 @@
           v-if="countriesStore.isLoading"
         >
           <!-- Center the spinner -->
-          <fwb-spinner size="10" color="blue" />
+          <fwb-spinner size="10" />
         </div>
 
         <div class="dark:bg-gray-900" v-else>

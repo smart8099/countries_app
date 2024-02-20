@@ -10,9 +10,9 @@ defineProps({
   <div
     class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
   >
-    <a href="#">
+    <router-link :to="{ name: 'countryDetails',params : {name : country.name.common}}">
       <img class="rounded-t-lg w-full" :src="country.flags.svg" :alt="country.name.common" />
-    </a>
+    </router-link>
     <div class="p-3">
       <router-link
         :to="{ name: 'countryDetails',params : {name : country.name.common}}"

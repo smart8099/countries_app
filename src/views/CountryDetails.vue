@@ -4,7 +4,7 @@
     v-if="countriesStore.isLoading"
   >
     <!-- Center the spinner -->
-    <fwb-spinner size="10" color="blue" />
+    <fwb-spinner  size="10"/>
   </div>
   <div v-else>
     <div class="container mx-auto py-8 dark:bg-gray-900">
@@ -289,10 +289,11 @@
 
 
 <script setup>
-import { onMounted } from "vue";
+import { onBeforeUnmount, onMounted } from "vue";
 import { useCountriesStore } from "@/stores/countries";
 import numeral from "numeral";
 import { useRoute } from "vue-router";
+import { FwbSpinner } from "flowbite-vue";
 
 const route = useRoute();
 
@@ -309,5 +310,9 @@ onMounted(async () => {
   await countriesStore.getSingleCountry(props.name, route.query);
   console.log("coutry object is ", countriesStore.singleCountry);
 });
+
+onBeforeUnmount(() =>{
+  countriesStore.clearSingleCountry()
+})
 </script>
 

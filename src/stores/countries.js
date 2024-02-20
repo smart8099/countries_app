@@ -117,7 +117,7 @@ export const useCountriesStore = defineStore("countries", {
 
     async getSingleCountry(routeCountryName) {
       try {
-        this.isLoading = true
+        this.isLoading = true;
         const result = await axios(
           `https://restcountries.com/v3.1/name/${routeCountryName}`
         );
@@ -126,17 +126,21 @@ export const useCountriesStore = defineStore("countries", {
         this.singleCountry = extractedCountry[0];
         console.log(this.singleCountry);
       } catch (error) {
-        this.singleCountry = {}
+        this.singleCountry = {};
         console.log(error);
         // if (error.response.status === 404) {
-        //   router.push({ 
+        //   router.push({
         //     name: "NotFound",
-           
+
         //   });
         // }
-      }finally{
-        this.isLoading = false
+      } finally {
+        this.isLoading = false;
       }
     },
+
+    clearSingleCountry(){
+      this.singleCountry = {}
+    }
   },
 });
